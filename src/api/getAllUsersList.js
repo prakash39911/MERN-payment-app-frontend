@@ -1,4 +1,6 @@
 export const useGetAllUsersListApi = async (filterObj) => {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const localstorageToken = JSON.parse(localStorage.getItem("jwttoken"));
 
   // Build query parameters string from the filters object
@@ -6,7 +8,7 @@ export const useGetAllUsersListApi = async (filterObj) => {
 
   if (localstorageToken) {
     const response = await fetch(
-      `http://localhost:3000/api/v1/user/getalluser?${queryParams}`,
+      `${API_BASE_URL}/api/v1/user/getalluser?${queryParams}`,
       {
         method: "GET",
         headers: {

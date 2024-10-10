@@ -1,9 +1,11 @@
 export const useTransferAmountApi = async (obj) => {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const localstoragetoken = JSON.parse(localStorage.getItem("jwttoken"));
 
   if (localstoragetoken) {
     const response = await fetch(
-      "http://localhost:3000/api/v1/account/transferfund",
+      `${API_BASE_URL}/api/v1/account/transferfund`,
       {
         method: "POST",
         headers: {
